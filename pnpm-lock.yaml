@@ -8,6 +8,12 @@ importers:
 
   .:
     dependencies:
+      '@types/body-parser':
+        specifier: ^1.19.6
+        version: 1.19.6
+      body-parser:
+        specifier: ^2.2.0
+        version: 2.2.0
       dotenv:
         specifier: ^17.2.1
         version: 17.2.1
