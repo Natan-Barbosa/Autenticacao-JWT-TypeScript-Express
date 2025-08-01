@@ -16,11 +16,13 @@
   "description": "",
   "dependencies": {
     "@types/body-parser": "^1.19.6",
+    "@types/jsonwebtoken": "^9.0.10",
     "body-parser": "^2.2.0",
     "dotenv": "^17.2.1",
     "express": "^5.1.0",
     "jet-logger": "^2.0.1",
     "jiti": "^2.5.1",
+    "jsonwebtoken": "^9.0.2",
     "morgan": "^1.10.1",
     "reflect-metadata": "^0.2.2",
     "tsyringe": "^4.10.0"
