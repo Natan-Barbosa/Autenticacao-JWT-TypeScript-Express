@@ -3,6 +3,7 @@ import jwt from "jsonwebtoken";
 import * as dotenv from "dotenv";
 import { HttpException } from "./exception.model";
 import { StatusCodes } from "http-status-codes";
+import { JwtPayload } from "jsonwebtoken";
 
 dotenv.config();
 
@@ -19,15 +20,16 @@ export class JWT {
     return generatedJWT;
   }
 
-  public static verify(token: string) {
+  public static verifyAndDecode(token: string) {
     jwt.verify(token, secretKey, (err, decoded) => {
-      if (!err) {
+      if (err || !decoded) {
         throw new HttpException(
           StatusCodes.UNAUTHORIZED,
           "You're Not Authorized"
         );
       }
-      return decoded;
     });
+    const decodedToken = jwt.decode(token);
+    return decodedToken;
   }
 }
