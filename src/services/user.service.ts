@@ -1,5 +1,7 @@
 import { UserEntitie, userRole } from "@/entities/User.entitie";
+import { injectable } from "tsyringe";
 
+@injectable()
 export class UserService {
   private readonly users = [
     new UserEntitie(
