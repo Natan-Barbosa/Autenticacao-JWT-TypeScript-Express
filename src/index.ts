@@ -1,9 +1,13 @@
+import "@/containers/user.container";
 import { Application, Request, Response } from "express";
 import express from "express";
 import morgan from "morgan";
+import BodyParser from "body-parser";
 import { logger } from "./config/jet.logger.config";
 import * as dotenv from "dotenv";
 import { enviroment } from "./constants/enviroment";
+import { AuthRouters } from "./routes/auth.route";
+import { errorMiddleware } from "./middlewares/error.middleware";
 
 dotenv.config();
 const envConfig = process.env.NODE_ENV || enviroment.dev;
@@ -18,6 +22,10 @@ if (envConfig == enviroment.dev) {
 app.get("/", (_req: Request, res: Response) => {
   res.send("Hello World");
 });
+
+app.use(BodyParser.json());
+app.use(AuthRouters);
+app.use(errorMiddleware);
 
 app.listen(port, () => {
   if (envConfig == enviroment.dev) {
